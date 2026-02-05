@@ -1,0 +1,11 @@
+Распаковать:
+unzip file
+unar file
+
+
+Архивировать:
+tar cf ziiped.tar.gz ./file
+
+Распаковать:
+--strip-components=2 - удаляет два уровня в папке firefox
+tar xzf ../firefox.tar.gz --strip-components=2

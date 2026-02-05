@@ -1,0 +1,7 @@
+ssh:
+ssh2john id_rsa > id_rsa.hash
+john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash
+
+archive:
+zip2john archive.zip > archive.hash
+john --wordlist=/usr/share/wordlists/rockyou.txt archive.hash

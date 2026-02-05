@@ -1,0 +1,5 @@
+# Сделать файл неизменяемым
+sudo chattr +i /etc/resolv.conf
+
+# Разрешить изменения
+sudo chattr -i /etc/resolv.conf

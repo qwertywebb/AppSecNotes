@@ -1,0 +1,5 @@
+get steg info:
+steghide extract -sf Alien_autospy.jpg
+
+bruteforce steg:
+stegseek cute-alien.jpg /usr/share/wordlists/rockyou.txt

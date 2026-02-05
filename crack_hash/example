@@ -1,0 +1,10 @@
+https://crackstation.net/
+
+hashcat md5:
+hashcat -m 0 3b2a1053e3270077456a79192070aa78 /usr/share/wordlists/rockyou.txt
+
+# Взлом паролей md5(хэш + соль) с помощью hashcat:
+
+echo "hash:salt" > hash.txt
+
+hashcat -m 20 hash.txt /usr/share/wordlists/rockyou.txt

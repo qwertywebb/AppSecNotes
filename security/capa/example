@@ -1,0 +1,5 @@
+Capa позволяет искать возможные уязвимости в программном обеспечении. Файлы .exe, dll и др.
+
+https://mandiant.github.io/capa/explorer/#/
+
+capa -j /path/to/file > result.json

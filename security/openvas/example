@@ -1,0 +1,1 @@
+sudo docker run -d -p 443:443 --name openvas immauss/openvas

