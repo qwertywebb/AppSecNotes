@@ -5,3 +5,19 @@ john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash
 archive:
 zip2john archive.zip > archive.hash
 john --wordlist=/usr/share/wordlists/rockyou.txt archive.hash
+
+password:
+
+# Копируем нужные файлы (требуются root права через любую утилиту nano и тд), главное чтобы был доступ к /etc/shadow
+sudo cp /etc/passwd /tmp/passwd.txt
+sudo cp /etc/shadow /tmp/shadow.txt
+
+# Сделаем unshadow
+
+unshadow /tmp/passwd.txt /tmp/shadow.txt > /tmp/passwords.txt
+
+# Используем John the Ripper для взлома паролей
+
+john --wordlist=/usr/share/wordlists/rockyou.txt /tmp/passwords.txt
+
+#
