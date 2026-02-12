@@ -1,0 +1,6 @@
+# Посмотрим программное обеспечение, установленное на машине
+wmic product get name,version,vendor
+
+# Проверяем уязвимые программы
+https://www.exploit-db.com/
+https://packetstormsecurity.com/
