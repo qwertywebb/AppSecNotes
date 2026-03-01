@@ -1,8 +1,0 @@
-# smb connect(445 port)
-
-smbclient // 10.48.145.6/IPC$ -U 'penny%leo1234'
-
-
-# METASPLOIT MODULES
-
-exploit(windows/smb/ms17_010_eternalblue)

