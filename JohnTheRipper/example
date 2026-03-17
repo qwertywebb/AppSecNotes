@@ -19,3 +19,11 @@ unshadow /tmp/passwd.txt /tmp/shadow.txt > /tmp/passwords.txt
 # Используем John the Ripper для взлома паролей
 
 john --wordlist=/usr/share/wordlists/rockyou.txt /tmp/passwords.txt
+
+
+Hash:
+
+john --wordlist=./easypeasy_1596838725703.txt hash.txt
+
+Если знаем формат:
+john --format=Raw-SHA256 --wordlist=./easypeasy_1596838725703.txt hash.txt
