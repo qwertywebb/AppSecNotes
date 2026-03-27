@@ -1,0 +1,40 @@
+┌─────────────────────────────────────────────────────────────────┐
+│                       PROTOCOLS CHEATSHEET                      │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  HTTP://      → Запрос к серверу, есть Origin: домен            │
+│  HTTPS://     → То же, но с шифрованием                         │
+│  FILE://      → Локальный файл, Origin: null                    │
+│  DATA://      → Данные в URL, без запроса, Origin: null         │
+│  FTP://       → Передача файлов                                 │
+│  WS://        → WebSocket (незашифрованный)                     │
+│  WSS://       → WebSocket Secure (зашифрованный)                │
+│  MAILTO://    → Открыть почтовый клиент                         │
+│  TEL://       → Телефонная ссылка                               │
+│  JAVASCRIPT:// → Выполнить JS код (в href)                      │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│                     DATA: PROTOCOL FORMAT                       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  data:[MIME][;charset][;base64],<данные>                        │
+│                                                                 │
+│  Примеры:                                                       │
+│    data:text/plain,Hello                                        │
+│    data:text/html,<h1>Hi</h1>                                   │
+│    data:text/html;base64,PGgxPkhpPC9oMT4=                       │
+│    data:image/png;base64,iVBORw0...                             │
+│    data:application/json,{"key":"value"}                        │
+│                                                                 │
+├─────────────────────────────────────────────────────────────────┤
+│                        ORIGIN RULES                             │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  http://site.com   → Origin: http://site.com                    │
+│  https://site.com  → Origin: https://site.com                   │
+│  file:///path      → Origin: null                               │
+│  data:...          → Origin: null                               │
+│  about:blank       → Origin: null                               │
+│  javascript:...    → наследует Origin родителя                  │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘

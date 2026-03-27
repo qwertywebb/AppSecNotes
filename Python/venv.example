@@ -9,7 +9,3 @@ source venv/bin/activate
 3. Установить нужные библиотеки:
 
 pip install -r requirements.txt
-
-4. Запустить сервер:
-
-python3 app.py
