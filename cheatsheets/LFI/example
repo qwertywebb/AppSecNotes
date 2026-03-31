@@ -19,7 +19,7 @@ http://10.48.181.120/45kra24zxs28v3yd/administrator/alerts/alertConfigField.php?
 **Суть уязвимости:** PHP wrappers позволяют читать файлы на сервере через LFI, когда прямое включение не отображает содержимое (файл выполняется, а не выводится).
 
 **Пример эксплуатации:**
-http://target.com/page=php://filter/convert.base64-encode/resource=/etc/passwd
+http://target.com/?page=php://filter/convert.base64-encode/resource=/etc/passwd
 
 - Сервер возвращает base64-строку
 - Атакующий декодирует и получает содержимое файла
