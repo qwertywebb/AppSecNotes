@@ -1,6 +1,4 @@
-# Имя Фамилия / @nickname
-
-Grebenshchikov Sergey
+# Grebenshchikov Sergey/ @brk
 
 **Web Developer → Application Security / Red Teaming**
 
