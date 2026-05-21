@@ -1,11 +1,11 @@
-ssh:
+# ssh:
 ssh2john id_rsa > id_rsa.hash
 john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash
 
-gpg:
+# gpg:
 gpg2john private.gpg > private.hash
 
-archive:
+# archive:
 zip2john archive.zip > archive.hash
 john --wordlist=/usr/share/wordlists/rockyou.txt archive.hash
 
@@ -24,9 +24,19 @@ unshadow /tmp/passwd.txt /tmp/shadow.txt > /tmp/passwords.txt
 john --wordlist=/usr/share/wordlists/rockyou.txt /tmp/passwords.txt
 
 
-Hash:
-
+# Hash:
 john --wordlist=./easypeasy_1596838725703.txt hash.txt
 
-Если знаем формат:
+# Если знаем формат:
 john --format=Raw-SHA256 --wordlist=./easypeasy_1596838725703.txt hash.txt
+
+
+# РАБОТА С ПРАВИЛАМИ
+1. В /etc/john/john.conf
+добавляем правило, если знаем по какому принципу создаются пароли
+Например для [symbol][word][0-9][0-9]:
+[List.Rules:Test-rules]
+^[!@#$%%&*()_-+] Az"[0-9][0-9]"
+2. Создаем новый словарь из другого словаря, применяя правила
+john --wordlist=rockyou.txt --rules=Test-rules --stdout > new_wordlist.txt
+
