@@ -7,13 +7,13 @@
 # ARP сканирование, без сканирования портов:
 nmap -PR -sn TARGETS
 
-#Ping сканирование, без сканирования портов:
+# Ping сканирование, без сканирования портов:
 nmap -PE -sn TARGETS
 
-#ICMP timestamp сканирование, без сканирования портов(Если firewall блокирует echo запросы):
+# ICMP timestamp сканирование, без сканирования портов(Если firewall блокирует echo запросы):
 sudo nmap -PP -sn TARGETS
 
-#ICMp netmask сканирование, без сканирования портов(Если firewall блокирует echo запросы):
+# ICMp netmask сканирование, без сканирования портов(Если firewall блокирует echo запросы):
 sudo nmap -PM -sn TARGETS
 
 # Установка TCP-соединения syn,syn-ack,ack:
