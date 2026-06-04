@@ -1,4 +1,4 @@
-# АТАКА: KERBEROASTING
+# АТАКА: KERBEROASTING(Нужна учетка)
 
 ## Что это:
 Запрос TGS (Service Ticket) для учетных записей с SPN и взлом этого билета офлайн.
