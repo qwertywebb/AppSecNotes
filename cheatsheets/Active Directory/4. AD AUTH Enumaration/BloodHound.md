@@ -49,7 +49,6 @@ bloodhound-python -u username -p password -d DOMAIN -ns DNS_SERVER -c All --zip
 DCOnly — только минимальные запросы к DC
 Запуск с non-domain-joined машины через runas /netonly
 
----
 
 # ЭТАП 2: ЗАГРУЗКА ДАННЫХ В BLOODHOUND
 
@@ -61,7 +60,6 @@ http://IP:8080
 
 Administration → File Ingest → Upload ZIP
 
----
 
 # ЭТАП 3: АНАЛИЗ В BLOODHOUND
 
@@ -112,7 +110,6 @@ AllowedToAct — может делегировать
 AddMember — может добавить пользователя в группу
 ForceChangePassword — может сменить пароль
 
----
 
 # ПОЧЕМУ BLOODHOUND ТАК МОЩНЫЙ
 
@@ -127,7 +124,6 @@ ComputerA имеет HasSession от Domain Admin
 
 BloodHound показывает такие пути за секунды.
 
----
 
 # ОГРАНИЧЕНИЯ
 
@@ -136,7 +132,6 @@ BloodHound показывает такие пути за секунды.
 - Нет данных о всех сессиях (только те, которые удалось собрать)
 - Не показывает все возможные атаки (только известные)
 
----
 
 # БЫСТРАЯ ШПАРГАЛКА
 

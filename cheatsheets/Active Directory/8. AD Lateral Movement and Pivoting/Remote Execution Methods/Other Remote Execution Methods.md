@@ -75,7 +75,6 @@ nxc smb TARGET_IP -u user -p pass -d DOMAIN -x 'whoami /all'
 **Выполнить PowerShell команду (большая -X):**
 nxc smb TARGET_IP -u user -p pass -d DOMAIN -X '$PSVersionTable'
 
----
 
 # ОБЩАЯ ОСОБЕННОСТЬ
 

@@ -6,7 +6,6 @@ Windows Remote Management (WinRM) — протокол Microsoft для удал
 
 Evil-WinRM — инструмент для интерактивных WinRM сессий с дополнительными возможностями (upload/download, загрузка скриптов в память, DLL injection).
 
----
 
 # КЛЮЧЕВЫЕ ОТЛИЧИЯ ОТ PSEXEC
 
@@ -26,7 +25,6 @@ Evil-WinRM — инструмент для интерактивных WinRM се
 - PsExec: 445 (SMB)
 - Evil-WinRM: 5985 (HTTP) / 5986 (HTTPS)
 
----
 
 # ТРЕБОВАНИЯ ДЛЯ WINRM
 
@@ -36,7 +34,6 @@ Evil-WinRM — инструмент для интерактивных WinRM се
 
 Это делает WinRM более гибким — не обязательно быть Local Admin.
 
----
 
 # ПРЕИМУЩЕСТВА
 

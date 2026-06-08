@@ -5,7 +5,6 @@
 1. ActiveDirectory модуль (официальный от Microsoft)
 2. PowerView (из PowerSploit, более мощный для пентеста)
 
----
 
 # ЧАСТЬ 1: ACTIVE DIRECTORY МОДУЛЬ
 

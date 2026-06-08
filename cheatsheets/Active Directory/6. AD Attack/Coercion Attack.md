@@ -9,7 +9,6 @@
 1. LDAP Passback (атака на принтеры/устройства)
 2. File-based coercion (через .url файлы на сетевой шаре)
 
----
 
 # LDAP PASSBACK ATTACK
 
@@ -46,10 +45,8 @@ Bind DN: CN=svc.ldap,OU=Service Accounts,DC=thm,DC=loc
 Пароль: Pr1ntBind2025!%
 
 ## Проверка учетки
-
 nxc smb <IP_DC> -u 'svc.ldap' -p 'Pr1ntBind2025!%'
 
----
 
 # FILE-BASED COERCION (через .url файлы)
 

