@@ -1,0 +1,278 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="900" height="440">
+  <foreignObject x="0" y="0" width="100%" height="100%">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+      <head><meta charset="UTF-8"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:transparent; }
+
+  .wrap {
+    width:900px;
+    padding:28px 36px 24px;
+    margin:0 auto;
+  }
+
+  .title {
+    font-family:'JetBrains Mono',monospace;
+    font-size:24px;
+    font-weight:700;
+    color:#2d7a06;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    text-align:center;
+    margin-bottom:6px;
+  }
+
+  .subtitle {
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    color:#6b7a99;
+    text-align:center;
+    margin-bottom:28px;
+  }
+
+  /* ── SPECTRUM STRIP ── */
+  .spectrum-strip {
+    width:100%;
+    position:relative;
+    margin-bottom:10px;
+  }
+
+  .spectrum-bar {
+    width:100%;
+    height:14px;
+    border-radius:7px;
+    background:linear-gradient(90deg,
+      rgba(255,68,68,0.45) 0%,
+      rgba(255,140,66,0.45) 15%,
+      rgba(255,211,42,0.45) 30%,
+      rgba(136,204,20,0.45) 48%,
+      rgba(0,212,170,0.45) 60%,
+      rgba(47,128,237,0.45) 75%,
+      rgba(162,89,255,0.45) 90%
+    );
+  }
+
+  /* Dots on the spectrum — no extra outlines */
+  .spec-dot {
+    position:absolute;
+    top:1px;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    transform:translateX(-50%);
+    z-index:3;
+  }
+
+  .dot-rfid   { left:6%;  background:#ff8c42; box-shadow:0 0 6px rgba(255,140,66,0.5); }
+  .dot-nfc    { left:18%; background:#00a882; box-shadow:0 0 6px rgba(0,168,130,0.5); }
+  .dot-bt     { left:67%; background:#2f80ed; box-shadow:0 0 6px rgba(47,128,237,0.5); }
+  .dot-wifi-1 { left:68%; background:#5da30e; box-shadow:0 0 6px rgba(93,163,14,0.5); top:1px; }
+  .dot-wifi-2 { left:83%; background:#5da30e; box-shadow:0 0 6px rgba(93,163,14,0.5); }
+
+  /* ── FREQUENCY LABELS ── */
+  .freq-labels {
+    display:flex;
+    justify-content:space-between;
+    width:100%;
+    padding:4px 0 0;
+  }
+
+  .freq-label {
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:#6b7a99;
+  }
+
+  /* ── DIRECTION ARROWS ── */
+  .direction {
+    display:flex;
+    justify-content:space-between;
+    width:100%;
+    margin-bottom:28px;
+  }
+
+  .dir-text {
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:#6b7a99;
+  }
+
+  /* ── TECHNOLOGY CARDS ROW ── */
+  .tech-row {
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:14px;
+    width:100%;
+    margin-bottom:20px;
+  }
+
+  .tech-card {
+    border-radius:10px;
+    padding:18px 14px 16px;
+    text-align:center;
+    position:relative;
+  }
+
+  .tech-card::before {
+    content:'';
+    position:absolute;
+    top:0; left:0; right:0;
+    height:3px;
+    border-radius:10px 10px 0 0;
+  }
+
+  /* RFID */
+  .tc-rfid { background:rgba(255,140,66,0.2); border:1px solid rgba(255,140,66,0.25); }
+  .tc-rfid::before { background:#ff8c42; }
+  .tc-rfid .tc-name { color:#c96a20; }
+  .tc-rfid .tc-freq { color:#b86a2e; }
+
+  /* NFC */
+  .tc-nfc { background:rgba(0,168,130,0.2); border:1px solid rgba(0,168,130,0.25); }
+  .tc-nfc::before { background:#00a882; }
+  .tc-nfc .tc-name { color:#007a5e; }
+  .tc-nfc .tc-freq { color:#008a6a; }
+
+  /* Bluetooth */
+  .tc-bt { background:rgba(47,128,237,0.2); border:1px solid rgba(47,128,237,0.25); }
+  .tc-bt::before { background:#2f80ed; }
+  .tc-bt .tc-name { color:#1a5eb8; }
+  .tc-bt .tc-freq { color:#2468c0; }
+
+  /* Wi-Fi */
+  .tc-wifi { background:rgba(93,163,14,0.2); border:1px solid rgba(93,163,14,0.25); }
+  .tc-wifi::before { background:#5da30e; }
+  .tc-wifi .tc-name { color:#3d7a00; }
+  .tc-wifi .tc-freq { color:#4a8a08; }
+
+  .tc-emoji { font-size:24px; margin-bottom:8px; }
+  .tc-name { font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:700; letter-spacing:0.5px; margin-bottom:4px; }
+  .tc-freq { font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; margin-bottom:8px; }
+  .tc-desc { font-family:'JetBrains Mono',monospace; font-size:12px; color:#6b7a99; line-height:1.55; }
+
+  /* ── RANGE BAR inside each card ── */
+  .range-visual {
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px solid rgba(0,0,0,0.05);
+  }
+
+  .range-label {
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:#888;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    width:38px;
+    text-align:right;
+    flex-shrink:0;
+  }
+
+  .range-track {
+    flex:1;
+    height:5px;
+    border-radius:3px;
+    background:rgba(0,0,0,0.06);
+    overflow:hidden;
+  }
+
+  .range-fill {
+    height:100%;
+    border-radius:3px;
+  }
+
+  .rf-rfid { background:linear-gradient(90deg, #ff8c42, rgba(255,140,66,0.4)); }
+  .rf-nfc  { background:linear-gradient(90deg, #00a882, rgba(0,168,130,0.4)); }
+  .rf-bt   { background:linear-gradient(90deg, #2f80ed, rgba(47,128,237,0.4)); }
+  .rf-wifi { background:linear-gradient(90deg, #5da30e, rgba(93,163,14,0.4)); }
+
+  /* ── NOTE ── */
+  .note {
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:#6b7a99;
+    text-align:center;
+    font-style:italic;
+  }
+</style>
+
+      </head>
+      <body style="background:transparent;margin:0;padding:0;display:flex;justify-content:center;width:900px;">
+
+<div class="wrap">
+
+  <div class="title">WIRELESS FREQUENCY SPECTRUM</div>
+  <div class="subtitle">Where Wi-Fi, Bluetooth, NFC, and RFID sit on the radio frequency spectrum</div>
+
+  <!-- Spectrum Bar -->
+  <div class="spectrum-strip">
+    <div class="spectrum-bar"></div>
+    <div class="spec-dot dot-rfid"></div>
+    <div class="spec-dot dot-nfc"></div>
+    <div class="spec-dot dot-bt"></div>
+    <div class="spec-dot dot-wifi-1"></div>
+    <div class="spec-dot dot-wifi-2"></div>
+  </div>
+
+  <!-- Frequency Labels -->
+  <div class="freq-labels">
+    <span class="freq-label">100 KHz</span>
+    <span class="freq-label">13.56 MHz</span>
+    <span class="freq-label">100 MHz</span>
+    <span class="freq-label">1 GHz</span>
+    <span class="freq-label">2.4 GHz</span>
+    <span class="freq-label">5 GHz</span>
+    <span class="freq-label">10 GHz</span>
+  </div>
+
+  <div class="direction">
+    <span class="dir-text">◄ Lower Frequency · Longer Range</span>
+    <span class="dir-text">Higher Frequency · Shorter Range ►</span>
+  </div>
+
+  <!-- Technology Cards -->
+  <div class="tech-row">
+
+    <div class="tech-card tc-rfid">
+      <div class="tc-emoji">🏷️</div>
+      <div class="tc-name">RFID</div>
+      <div class="tc-freq">125 KHz — 960 MHz</div>
+      <div class="tc-desc">Radio-frequency identification for asset tracking and access control</div>
+    </div>
+
+    <div class="tech-card tc-nfc">
+      <div class="tc-emoji">📱</div>
+      <div class="tc-name">NFC</div>
+      <div class="tc-freq">13.56 MHz</div>
+      <div class="tc-desc">Near-field communication for contactless payments and data transfer</div>
+    </div>
+
+    <div class="tech-card tc-bt">
+      <div class="tc-emoji">🔵</div>
+      <div class="tc-name">Bluetooth</div>
+      <div class="tc-freq">2.4 GHz</div>
+      <div class="tc-desc">Short-range device pairing and data exchange, shares band with Wi-Fi</div>
+    </div>
+
+    <div class="tech-card tc-wifi">
+      <div class="tc-emoji">📡</div>
+      <div class="tc-name">Wi-Fi</div>
+      <div class="tc-freq">2.4 GHz &amp; 5 GHz</div>
+      <div class="tc-desc">Wireless LAN connectivity using 802.11 standards, dual-band operation</div>
+    </div>
+
+  </div>
+
+  <div class="note">Bluetooth and Wi-Fi (2.4 GHz) share the same frequency band, which can cause interference between devices.</div>
+
+</div>
+
+      </body>
+    </html>
+  </foreignObject>
+</svg>
