@@ -1,11 +1,8 @@
-DIR папки/файлы
-
+# DIR папки/файлы
 gobuster dir -u www.offensivetools.thm -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -t 64 -x .js,.php
 
-DNS - поддомены
-
+# DNS - поддомены
 gobuster dns -d offensivetools.thm -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt 
 
-VHOSTS - виртуальные хосты
-
+# VHOSTS - виртуальные хосты
 gobuster vhost -u "http://10.82.168.148" --domain offensivetools.thm --append-domain -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -t 64 | grep "200"

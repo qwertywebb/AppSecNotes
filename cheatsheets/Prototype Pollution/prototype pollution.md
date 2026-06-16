@@ -1,4 +1,4 @@
-Prototype Pollution - Cheat Sheet
+# Prototype Pollution - внедрение вредоносного кода в прототип объекта
 
 🔍 ЧТО ИСКАТЬ:
 • merge(target, source), _.merge(), $.extend(), Object.assign()

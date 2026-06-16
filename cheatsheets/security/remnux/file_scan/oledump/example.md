@@ -1,4 +1,4 @@
-Сканирует документы: excel,xlm,docx.
+# Сканирует документы: excel,xlm,docx.
 
 Сканирование: 
 oledump.py possible_malicious.docx 
