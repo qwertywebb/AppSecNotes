@@ -17,8 +17,18 @@
 - Когда нужен **графический доступ** (например, чтобы настроить выключение антивируса, запустить браузер для скачивания эксплойта, или если WinRM отключён).
 - Если ты получил учётные записи администратора или вошёл в группу `Remote Desktop Users`.
 
----
 
 ## 🧰 Remmina (Как подключиться по RDP)
 
 **Remmina** — это свободный клиент для Linux, который поддерживает **RDP**, VNC, SSH и другие протоколы. Он проще, чем `xfreerdp` в командной строке, и удобнее для тех, кто привык к GUI.
+
+# xfreerdp
+xfreerdp /v:THMJMP2.za.tryhackme.com:13389 /u:t1_thomas.moore /p:MyPazzw3rd2020
+
+
+# Идентифицировать RDP (если нестандартный порт)
+В msfconsole scanner/rdp/rdp_scanner
+
+# Пример вывода
+[*] 10.4.28.38:3333       - Detected RDP on 10.4.28.38:3333       (name:WIN-OMCNBKR66MN) (domain:WIN-OMCNBKR66MN) (domain_fqdn:WIN-OMCNBKR66MN) (server_fqdn:WIN-OMCNBKR66MN) (os_version:6.3.9600) (Requires NLA: Yes)
+[*] demo.ine.local:3333   - Scanned 1 of 1 hosts (100% complete)

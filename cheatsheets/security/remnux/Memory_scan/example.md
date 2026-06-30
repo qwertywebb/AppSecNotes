@@ -1,0 +1,12 @@
+# Volatility, при работе с образами памяти в качестве доказательств. 
+
+# PsTree
+Этот плагин отображает процессы в древовидной структуре на основе идентификатора их родительского процесса.
+vol3 -f wcry.mem windows.pstree.PsTree
+
+# PsList
+Этот плагин используется для отображения всех активных в данный момент процессов на компьютере.
+vol3 -f wcry.mem windows.pslist.PsList
+
+Ссылка на плагины:
+https://volatility3.readthedocs.io/en/stable/volatility3.plugins.html
