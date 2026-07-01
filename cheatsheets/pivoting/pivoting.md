@@ -2,9 +2,27 @@
 
 # Сканирование сети через ping:
 
-for i in {1..255}; do (ping -c 1 192.168.1.${i} | grep "bytes from" &); done
+# linux:
+for i in {1..255}; do (ping -c 1 192.168.0.${i} | grep "bytes from" &); done
 
-for i in {1..65535}; do (echo > /dev/tcp/192.168.1.1/$i) >/dev/null 2>&1 && echo $i is open; done
+for i in {1..65535}; do (echo > /dev/tcp/192.168.0.0/$i) >/dev/null 2>&1 && echo $i is open; done
+
+# windows:
+for /L %i in (1,1,255) do @ping -n 1 -w 100 192.168.0.%i | find "Reply"
+
+# Скан портов через powershell Windows
+$ip = "192.168.0.51"
+$ports = @(22,80,443,3306,8080,10000,3389,445,139,21,25)
+foreach ($port in $ports) {
+    $connection = New-Object System.Net.Sockets.TcpClient
+    try {
+        $connection.Connect($ip, $port)
+        Write-Host "Port $port is OPEN" -ForegroundColor Green
+        $connection.Close()
+    } catch {
+        Write-Host "Port $port is CLOSED" -ForegroundColor Red
+    }
+}
 
 # Proxychains
 
