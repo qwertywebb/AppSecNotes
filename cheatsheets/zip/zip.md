@@ -23,5 +23,8 @@ gunzip file.txt.gz
 # Распаковать ZIP
 unzip archive.zip
 
+# Запаковать ZIP
+zip archine.zip test.txt
+
 # Распаковать RAR/7z/ISO
 unar archive.rar

