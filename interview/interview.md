@@ -224,3 +224,164 @@ LLMNR / NBT-NS Poisoning — это атака «человек посереди
 * blue team / reverse engineering
 
 Фишинг → сотрудник запустил updates.ps1 → скрипт скачал с api-edgecloud.xyz зашифрованный amd.bin → расшифровал RC4 (ключ X9vT3pL2QwE8xR6ZkYhC4s) → запустил amdfendrsr.exe(оказался .net файл, декомпилирован с помощью ilspycmd) → тот ходил на 34.174.57.99 → C2 возвращал HTML с командой в <!-- oldcss=... --> → клиент парсил, расшифровывал AES (ключ из M4squ3r4d3Th3P4ck3tSt34lthM0d31337), выполнял → результат шифровался, двойной Base64, уходил в guid= → тихая эксфильтрация.
+
+* OWASP TOP 10
+Broken Access Control — нарушение контроля доступа
+Cryptographic Failures — ошибки криптографии/защиты данных
+Injection — SQLi, Command Injection и др.
+Insecure Design — небезопасное проектирование
+Security Misconfiguration — неправильная настройка безопасности
+Vulnerable and Outdated Components — уязвимые/устаревшие компоненты
+Identification and Authentication Failures — ошибки аутентификации
+Software and Data Integrity Failures — нарушение целостности ПО/данных
+Security Logging and Monitoring Failures — проблемы логирования и мониторинга
+SSRF — Server-Side Request Forgery
+Да, понял. Нужен формат **«вопрос → нормальный короткий ответ на собеседовании → команда/пример»**, а не одна строчка. Давай сделаем так.
+
+---
+
+* Что такое PTR-запись и как её получить?
+
+**Ответ:**
+PTR — это DNS-запись для **обратного DNS-разрешения**: по IP мы пытаемся получить hostname.
+
+`
+Получить PTR можно:
+
+```bash
+dig -x 1.2.3.4
+```
+
+или:
+
+```bash
+nslookup 1.2.3.4
+```
+* Есть домен. Как определить его подсеть?
+
+**Ответ:**
+Сначала получаю IP домена через DNS:
+
+```bash
+dig +short example.com
+```
+
+Допустим получил:
+
+```text
+1.2.3.4
+```
+
+Затем определяю, какому **netblock/CIDR и ASN** принадлежит этот IP:
+
+```bash
+whois 1.2.3.4
+```
+
+или через RDAP/ASN/BGP-сервисы.
+
+Получаю, например:
+
+```text
+1.2.3.0/24
+```
+
+
+
+
+* Что такое Parameter Tampering / Pollution и как это может помочь при обходе 403 IDOR?
+
+Ответ:
+
+Сначала проверяю Parameter Tampering — меняю значение ID (id=100 → id=101) и разные способы передачи параметра. Затем проверяю Parameter Pollution — передаю параметр несколько раз (id=100&id=101), потому что WAF/proxy и backend могут обработать значения по-разному. Также проверяю другие HTTP methods и endpoints. Цель — добиться доступа к чужому объекту, а не просто получить другой HTTP-код.
+
+* Что такое Blind SSRF?
+**Ответ:**
+Blind SSRF эксплуатирую через callback: сначала подтверждаю, что сервер делает мой запрос, затем через него исследую доступные внутренние сервисы и ищу SSRF chain до какого-либо impact
+
+* Какие транспортные протоколы знаешь?
+**Ответ:**
+
+Основные:
+* TCP
+* UDP
+
+Также:
+* SCTP
+* DCCP
+
+И современный:
+* QUIC
+
+
+* Что такое SNMP?
+**Ответ:**
+SNMP — **Simple Network Management Protocol**, протокол для мониторинга и управления сетевыми устройствами.
+
+Например:
+
+```text
+routers
+switches
+firewalls
+printers
+servers
+UPS
+```
+
+> «В первую очередь проверю доступность UDP/161, версию SNMP, community strings и попробую enumeration через snmpwalk. Основной интерес — получить информацию об устройстве и сети».
+
+
+* Что такое community string?
+**Ответ:**
+В SNMPv1/v2c community string выполняет роль простого shared secret для доступа к SNMP.
+
+Например:
+
+```text
+public
+private
+```
+
+Если используется слабая community string, можно получить информацию об устройстве.
+
+В SNMPv3 вместо такой модели используются механизмы аутентификации и шифрования.
+
+
+* Как написать простой сканер поддоменов через Bash?
+
+**Ответ:**
+
+Берём wordlist:
+И перебираем его через `dig`:
+
+while read -r sub; do
+    domain="$sub.example.com"
+
+    if dig +short "$domain" | grep -q .; then
+        echo "$domain"
+    fi
+done < subdomains.txt
+
+* Как Subfinder ищет поддомены без brute force?
+
+**Ответ:**
+
+Subfinder использует **passive enumeration**.
+
+Он обращается к внешним источникам данных:
+
+Certificate Transparency
+DNS databases
+security databases
+search engines
+API различных сервисов
+
+* Как правильно использовать Subfinder?
+Например:
+subfinder -d example.com -silent
+
+Для более полного результата настраивают API keys поддерживаемых passive providers.
+
+* «Как Subfinder находит поддомены, если не брутит?»**
+«Subfinder выполняет passive subdomain enumeration. Он агрегирует данные из различных внешних источников, например Certificate Transparency, security/DNS databases и API провайдеров. Поэтому он не перебирает DNS namespace напрямую. После получения списка я отдельно проверяю DNS resolution, а затем HTTP/HTTPS доступность. Для максимального покрытия настраиваю API keys доступных passive sources».
