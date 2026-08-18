@@ -53,7 +53,6 @@ vpn.example.com
 
 > Certificate Transparency позволяет пассивно находить поддомены по выданным TLS-сертификатам.
 
----
 
 ### Subfinder
 
@@ -82,7 +81,6 @@ Subfinder → найденные поддомены
 
 Subfinder **не обязан брутить DNS**.
 
----
 
 ### Sublist3r
 
@@ -92,7 +90,6 @@ sublist3r -d hackersploit.org
 
 Используется для поиска поддоменов через различные OSINT/search-engine источники.
 
----
 
 ### Amass
 
@@ -109,7 +106,6 @@ Subfinder → быстрый passive enumeration
 Amass     → более широкий reconnaissance framework
 ```
 
----
 
 ### theHarvester
 
@@ -130,7 +126,6 @@ search-engine results
 
 Особенно полезен для поиска **email addresses и связанных доменов**.
 
----
 
 ### Shodan
 
@@ -161,7 +156,6 @@ OS
 certificates
 ```
 
----
 
 ### Censys
 
@@ -181,7 +175,6 @@ domains
 IP infrastructure
 ```
 
----
 
 ### WhatWeb
 
@@ -202,7 +195,6 @@ technologies
 
 **Но:** это уже скорее **active web fingerprinting**, а не чистый passive recon, потому что инструмент обращается к сайту.
 
----
 
 ### BuiltWith
 
@@ -227,7 +219,6 @@ hosting
 
 > **Technology fingerprinting**, а не чистый passive recon.
 
----
 
 # Ещё несколько важных passive recon техник
 
@@ -251,7 +242,6 @@ login pages
 утечки информации
 ```
 
----
 
 ### 2. GitHub reconnaissance
 
@@ -274,7 +264,6 @@ configuration
 accidentally committed secrets
 ```
 
----
 
 ### 3. Wayback Machine
 
@@ -302,7 +291,6 @@ example.com/api/v1/
 
 мог существовать раньше, даже если сейчас его нет.
 
----
 
 ### 4. Passive DNS
 
@@ -320,7 +308,6 @@ passive DNS databases
 
 Полезно, когда текущий DNS уже ничего интересного не показывает.
 
----
 
 ### 5. Reverse IP
 
@@ -338,7 +325,6 @@ Reverse IP:
 IP → множество потенциально связанных доменов
 ```
 
----
 
 ### 6. ASN / BGP reconnaissance
 
@@ -358,9 +344,8 @@ announced prefixes
 
 Можно определить публичные диапазоны, которые объявляет организация.
 
----
 
-# Как я бы собрал твою шпаргалку
+# Шпаргалка
 
 ```text
 ================ PASSIVE RECON ================
