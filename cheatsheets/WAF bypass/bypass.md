@@ -86,3 +86,36 @@ SecRule ARGS:admin "@rx ^(true|1|yes)$" \
 - PATCH: Similar to PUT, for partial updates
 - DELETE: Used to delete resources
 - TRACE: Echoes back the request (often disabled)
+
+
+
+# Список способов закодировать двойную кавычку (")
+```js
+&quot;
+&#34;
+&#x22;
+&#x0022;
+%22
+%2522
+%u0022
+\"
+\x22
+\u0022
+\042
+&qUoT;
+&#x2&#x32;
+&quot ;
+%00%22
+%5C%22
+%255C%2522
+String.fromCharCode(34)
+atob('Ig==')
+eval("\"")
+\22
+```
+# Вместо кавычки перенос на новую строку
+%0a
+%09
+%0D
+%0b (вертикальная табулция)
+%0с (новая страница)
