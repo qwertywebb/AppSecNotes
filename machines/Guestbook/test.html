@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="entries"></div>
+    <script>
+        const esc = s => (s||"").replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+        function loadEntries() {
+            const rows = [{  "message": "alert(1)", "name": "Night Manager",  "room": "Null" }];
+            document.getElementById('entries').innerHTML = rows.map(e => `
+    <div class="entry">
+      <div class="entry-head"><b>${esc(e.name)}</b> <span class="room">Rm ${esc(e.room)}</span>
+        <span class="badge ${e.reviewed ? 'seen' : 'pending'}">${e.reviewed ? 'reviewed' : 'pending review'}</span></div>
+      <div class="entry-msg">${esc(e.message)}</div>
+    </div>`).join('');
+        }
+        loadEntries();
+    </script>
+</body>
+
+</html>
