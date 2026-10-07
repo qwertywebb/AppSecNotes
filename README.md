@@ -1,121 +1,94 @@
-# @GrebenshchikovSergey
-**Web Developer → Application Security / Red Teaming**
+# Сергей Гребенщиков
 
-> «Из разработки — в безопасность: знаю, где ломается код и как его починить, не убив продукт»
+**Penetration Tester (Web / Internal)**
 
-[![TryHackMe](https://img.shields.io/badge/TryHackMe-100%2B%20machines-brightgreen)](https://tryhackme.com/p/moersvziseropms3)
-[![OWASP](https://img.shields.io/badge/OWASP-Top%2010-blue)](https://owasp.org/)
+> Из разработки в безопасность: 4 года писал код, последние 1.5 года — ломаю и защищаю.
+
+[![TryHackMe](https://img.shields.io/badge/TryHackMe-150%2B%20machines-brightgreen)](https://tryhackme.com/p/moersvziseropms3)
+[![eJPT](https://img.shields.io/badge/eJPT-2026-blue)]()
+[![OWASP](https://img.shields.io/badge/OWASP-Top%2010-orange)](https://owasp.org/)
 [![MITRE ATT&CK](https://img.shields.io/badge/MITRE-ATT%26CK-red)](https://attack.mitre.org/)
 
-## 👋 О себе
+## О себе
 
-- 6 лет коммерческой разработки
-- Сейчас целенаправленно перехожу в Application Security / Penetration Testing
-- Ежедневный режим: теория + практика
-- Знаю, как работают приложения изнутри, поэтому понимаю, где разработчики ошибаются
+- 4 года коммерческой разработки (React, Vue, Next.js, Docker, CI/CD)
+- 1.5 года в безопасности приложений: поиск и эксплуатация уязвимостей, secure code review, реагирование на инциденты
+- 150+ машин на TryHackMe: веб, Active Directory, повышение привилегий, Windows, Linux
+- Читаю код и понимаю, где разработчик допустил ошибку
 
-## 💼 Опыт в информационной безопасности
+## Опыт в безопасности
 
-- **Аудит безопасности ERP-системы** — выявление и устранение SQLi, IDOR, нарушений авторизации, хранение паролей в открытом виде
-- **Экстренный анализ инцидента** — реагирование на RCE в проекте InnTravel (изоляция сервера, ротация ключей, восстановление из бэкапа)
-- **Активное участие в CTF** — 100+ машин на TryHackMe, отработка реальных сценариев атак
+- **Аудит ERP-системы** — выявил SQL-инъекции, IDOR, нарушения авторизации, хранение паролей в открытом виде. Подготовил отчёт, ТЗ на рефакторинг, сопровождал устранение до закрытия всех критичных уязвимостей.
+- **Реагирование на инцидент** — восстановил сервис на Next.js после эксплуатации RCE (CVE-2025-55182): изоляция, ротация ключей, восстановление из бэкапа, внедрение WAF.
 
-## 🛠 Технологии и инструменты
+## Инструменты
 
-**Пентест и разведка**  
+**Пентест и разведка**
 Kali, Nmap, Masscan, Metasploit, Burp Suite, OWASP ZAP, Wireshark, tcpdump, sqlmap, John the Ripper, Hydra, Hashcat, Gobuster, ffuf, dirsearch, nuclei, Amass, Subfinder, Nikto
 
-**C2 и работа с агентами**  
+**C2**
 Empire + Starkiller
 
-**Active Directory и Windows**  
+**Active Directory и Windows**
 Impacket, PowerShell, Mimikatz, BloodHound
 
-**Сети и ОС**  
-Linux (Ubuntu, Kali), Windows (клиентские и серверные версии), TCP/IP, HTTP/HTTPS, DNS, ARP, DHCP, VLAN, VPN, Active Directory
+**Сети и ОС**
+Linux (Ubuntu, Kali), Windows (клиентские и серверные), TCP/IP, HTTP/HTTPS, DNS, ARP, DHCP, VLAN, VPN, Active Directory
 
-**Веб-технологии и архитектура**  
+**Веб и архитектура**
 JavaScript, TypeScript, Python, Bash, REST, GraphQL, WebSocket, JWT, OAuth 2.0, CSP
 
-**Безопасная разработка и защита**  
-OWASP Top 10, MITRE ATT&CK, параметризованные запросы, хеширование (bcrypt), WAF на уровне Nginx (ограничение частоты, блокировка по IP)
+**Безопасная разработка**
+OWASP Top 10, MITRE ATT&CK, параметризованные запросы, bcrypt, WAF на Nginx (rate limiting, блокировка по IP)
 
-**DevOps и окружение**  
+**DevOps**
 Docker, Git, CI/CD (базово), VirtualBox
 
-**Логирование и мониторинг**  
-Winston, Morgan, сбор логов, алерты
+## Cheatsheets
 
-## 📚 Что в этом репозитории
+Систематизированная база знаний по полному циклу пентеста: от разведки до пост-эксплуатации.
 
-## 📚 Cheatsheets
-
-Систематизированная база знаний, собранная и обновляемая в процессе ежедневного обучения.  
-Охватывает полный цикл пентеста: от разведки до пост-эксплуатации.
-
-### 🔍 Reconnaissance & Enumeration
-
-- Active / Passive Recon — `nmap`, `enum4linux`, `Google Dork`, `searchsploit`
+### Reconnaissance & Enumeration
+- Active / Passive Recon — `nmap`, `enum4linux`, Google Dork, `searchsploit`
 - Directory Fuzzing — `gobuster`, `ffuf`, `nikto`, `dirsearch`
 - Subdomain Enumeration — `Amass`, `Subfinder`
 - Protocol Analysis — `Wireshark`, `tcpdump`
 
-### 💉 Web Application Attacks
-
+### Web Application Attacks
 - Injections — SQLi, Command Injection, Wildcard Injection
 - File Vulnerabilities — LFI, RFI, Insecure Deserialization
 - Auth & Tokens — JWT, OAuth, CSRF
 - Advanced Web — SSRF, HTTP Request Smuggling, Prototype Pollution
 - Client-Side — XSS, Browser Security
 
-### 🔐 Authentication & Password Attacks
-
-- Password Cracking — `JohnTheRipper`, `hydra`, `medusa`, `Hashcat`
+### Password Attacks
+- Cracking — `John the Ripper`, `hydra`, `medusa`, `Hashcat`
 - Hash Analysis — `CyberChef`
 
-### ⚙️ Post-Exploitation & Privilege Escalation
+### Post-Exploitation & Privilege Escalation
+- Linux — команды, повышение привилегий, права
+- Windows — внутреннее устройство, службы, повышение привилегий, Active Directory, BloodHound
 
-- Linux — `linux-commands`, Privilege Escalation, Permissions
-- Windows — Windows Internals, Windows Services, Privilege Escalation, Active Directory, BloodHound
-
-### 🐍 Development & Automation
-
+### Development & Automation
 - `Python` — скрипты для автоматизации пентеста
 - `reverse_shell` — генерация и обработка реверс-шеллов
 
-### 🛡️ Defensive & Misc
+### Misc
+- `steganography` — CTF
+- `zip` — работа с архивами
 
-- `steganography` — стеганография (CTF)
-- `security` — общие принципы безопасности
-- `zip` — работа с архивами (пароли, распаковка)
+## Writeups
 
-## 📊 Статистика
+- **Быстрый writeup** (15 мин) — для закрепления
+- **Полный отчёт** (1–2 часа) — для ключевых машин
 
-- **Пройдено машин:** 100+ (TryHackMe)
-- **Челендж-режим:** ежедневное решение машин
-- **Cheatsheets:** постоянно обновляются
-- **Writeups:** краткие и полные отчёты
+## Сертификация
 
-**Статус:** Активно пополняется. Каждый день — новая техника или инструмент.
+- eJPT (2026)
+- Готовлюсь к OSCP
 
-### 🖥️ Machines Writeups (`/machines/`)
-
-- Быстрый writeup (15 мин) — для закрепления
-- Полный отчет (1-2 часа) — для лучших машин
-
-## 🎓 Обучение и сертификация
-
-- TryHackMe — 100+ машин, активный ежедневный челлендж
-- Изучение OWASP Top 10, MITRE ATT&CK
-- В процессе: подготовка к OSCP
-
-## 📫 Контакты
+## Контакты
 
 - Telegram: [@GrebenshchikovSergey](https://t.me/GrebenshchikovSergey)
 - Email: landhardy22@gmail.com
-- THM Profile: [https://tryhackme.com/p/moersvziseropms3](https://tryhackme.com/p/moersvziseropms3)
-
-
-**Глубокое понимание веба** → знаю, где разработчики ошибаются  
-**Системность** → cheatsheets + writeups каждый день  
-**Готовность к работе** → умею документировать и коммуницировать результаты
+- THM: [tryhackme.com/p/moersvziseropms3](https://tryhackme.com/p/moersvziseropms3)
