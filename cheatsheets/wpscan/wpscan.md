@@ -25,7 +25,7 @@
 │  wpscan --url http://example.com --enumerate at      # все                 │
 │                                                                             │
 │  # Перечисление всего сразу                                                 │
-│  wpscan --url http://example.com --enumerate u,vp,vt,ap,at                 │
+│  wpscan --url http://example.com --enumerate u,vp,vt                        │
 │                                                                             │
 │  # Брутфорс паролей                                                         │
 │  wpscan --url http://example.com --usernames admin --passwords rockyou.txt │
